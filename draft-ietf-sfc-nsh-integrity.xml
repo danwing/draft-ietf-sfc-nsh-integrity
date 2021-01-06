@@ -1089,27 +1089,16 @@
         within the boundaries, then the SFC data plane element receiving such
         packet MUST discard the NSH message.</t>
 
-        <t>Replay attacks are still possible within the Delta interval, but
-        that is an acceptable risk. Lowering the Delta interval may soften
-        this risk, but special care should be taken when setting very low
-        values as this may lead to dropping legitimate traffic. <list
-            style="empty">
-            <t>Note 1: Replay attacks within the Delta interval may be
-            detected by an NSH-aware node by recording a unique value derived,
-            for example, from the NSH data and Original packet (e.g., using
-            SHA2). Such NSH-aware node will reject duplicates when the count
-            of a given derived value exceeds a particular threshold. The SF
-            has to maintain the unique values only for the time of Delta
-            interval seconds. The complexity of such approach is to be
-            weighted against other methods (e.g., set a lower acceptable Delta
-            value) and actual risks specific to each deployment. </t>
-
-            <t>Note 2: Early version of this specification used a sequence
-            number to detect replay attacks, but that design was abandoned
-            because a given SF instance may not receive all packets of a given
-            service function chain for various reasons (e.g., load-balancing,
-            SFC offloads). </t>
-          </list></t>
+     <t>Within the delta window, the Sequence number protects against
+          replay attacks.  The SFC data plane element MUST discard packets
+          with duplicate sequence numbers within the timestamp delta window.
+          In deployments with several SFC data plane elements performing
+          the same function (e.g., cluster or load-balanced SFC data plane
+          elements), the system comprising those SFC data plane elements MUST
+          still discard duplicate sequence numbers. The mechanism for their
+          coordination or their load balancing to comply with this requirement
+          is out of scope of this specification.</t>
+          
 
         <t>All SFC data plane elements must be synchronized among themselves.
         These elements may be synchronized to a global reference time.</t>
