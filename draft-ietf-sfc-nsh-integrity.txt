@@ -378,7 +378,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
    levels of assurance (LoAs) are supported.
 
    A first level of assurance where all NSH data except the Base Header
-   are integrity protected (Figure 2).  In this case, the NSH Imposer
+   are integrity protected (Figure 2).  In this case, the NSH imposer
    may be a Classifier, an NSH-aware SF, or an SFC Proxy.  SFFs are not
    thus provided with authentication material.  Further details are
    discussed in Section 5.1.
@@ -412,7 +412,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
 
    A second level of assurance where all NSH data, including the Base
    Header, are integrity protected (Figure 3).  In this case, the NSH
-   Imposer may be a Classifier, an NSH-aware SF, an SFF, or an SFC
+   imposer may be a Classifier, an NSH-aware SF, an SFF, or an SFC
    Proxy.  Further details are provided in Section 5.2.
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -570,7 +570,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
    New NSH Variable-Length Context Headers are defined in Section 5 for
    NSH data integrity protection and, optionally, encryption of Context
    Headers carrying privacy-sensitive metadata.  Concretely, an NSH
-   Imposer includes (1) the key identifier to identify the keying
+   imposer includes (1) the key identifier to identify the keying
    material, (2) the timestamp to protect against replay attacks
    (Section 7.4), and (3) the Message Authentication Code (MAC) for the
    target NSH data (depending on the integrity protection scope)
@@ -1046,10 +1046,10 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
 
    If the Context Headers are not encrypted, the HMAC algorithm
    discussed in [RFC4868] is used to integrity protect the target NSH
-   data.  An NSH Imposer inserts a "MAC and Encrypted Metadata" Context
+   data.  An NSH imposer inserts a "MAC and Encrypted Metadata" Context
    Header for integrity protection (Section 5).
 
-   The NSH Imposer computes the message integrity for the target NSH
+   The NSH imposer computes the message integrity for the target NSH
    data (depending on the integrity protection scope discussed in
    Section 5) using MAC_KEY and HMAC algorithm.  It inserts the MAC in
    the "MAC and Encrypted Metadata" Context Header.  The length of the
@@ -1074,7 +1074,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
 
 7.3.  Encrypted NSH Metadata Generation
 
-   An NSH Imposer can encrypt Context Headers carrying privacy-sensitive
+   An NSH imposer can encrypt Context Headers carrying privacy-sensitive
    metadata, i.e., encrypted and unencrypted metadata may be carried
    simultaneously in the same NSH packet (Figure 9).
 
@@ -1106,7 +1106,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
    revealed to attackers.  Privacy specific threats are discussed in
    Section 5.2 of [RFC6973].
 
-   Using K and authenticated encryption algorithm, the NSH Imposer
+   Using K and authenticated encryption algorithm, the NSH imposer
    encrypts the Context Headers (as set by the control plane Section 3),
    computes the message integrity for the target NSH data, and inserts
    the resulting payload in the "MAC and Encrypted Metadata" Context
@@ -1308,7 +1308,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
    participating NSH-aware nodes SHOULD have the control plane
    distribute a new key identifier and associated keying material so
    that when the secret key is expired, those nodes are prepared with
-   the new secret key.  This allows the NSH Imposer to switch to the new
+   the new secret key.  This allows the NSH imposer to switch to the new
    key identifier as soon as necessary.  It is RECOMMENDED that the next
    key identifier and associated keying material be distributed by the
    control plane well prior to the secret key expiration time.
