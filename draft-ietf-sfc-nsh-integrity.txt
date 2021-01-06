@@ -1187,7 +1187,7 @@ Internet-Draft      Integrity Protection for the NSH        January 2021
    as this may lead to dropping legitimate traffic.
 
       Note 1: Replay attacks within the Delta interval may be detected
-      by an NSH-aware node by recoding a unique value derived, for
+      by an NSH-aware node by recording a unique value derived, for
       example, from the NSH data and Original packet (e.g., using SHA2).
       Such NSH-aware node will reject duplicates when the count of a
       given derived value exceeds a particular threshold.  The SF has to
